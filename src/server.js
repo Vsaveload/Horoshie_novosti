@@ -6,6 +6,8 @@ import layoutMW from './middlewars/layoutMW';
 import startPageRender from './routes/render/startPageRender';
 import apiNews from './routes/api/apiNews';
 import newsPageRender from './routes/render/newsPageRender';
+import registrPageRender from './routes/render/registrPageRender';
+import userController from '../src/routes/api/userRouter';
 
 const PORT = 3000;
 const app = express();
@@ -32,6 +34,8 @@ app.use(express.json());
 app.use(layoutMW);
 
 app.use('/', startPageRender);
+app.use('/', registrPageRender);
+app.use('/api/v1/auth', userController);
 app.use('/news', newsPageRender);
 app.use('/apinews', apiNews);
 
