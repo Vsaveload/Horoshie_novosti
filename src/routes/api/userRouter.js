@@ -28,7 +28,7 @@ router.post('/login', async (req, res) => {
     // res.sendStatus(200);
     res.json({ name: currUser.email });
   } else {
-    res.sendStatus(401);
+    res.status(500).json({ message: 'Email или пароль не верны' });
   }
 });
 router.get('/logout', (req, res) => {
