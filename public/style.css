@@ -1,0 +1,27 @@
+.body {
+   height: 100%;
+   background-color: #efecf5;
+   margin: 0px;
+}
+
+.header {
+   text-align: center;
+   padding-top: 80px;
+   font-size: 60px;
+   font-family: system-ui;
+   color: #4520ab;
+}
+
+
+
+.container {
+
+   width: 500px;
+
+
+}
+
+.btn {
+   background-color: #FFBC5B;
+   width: 480px;
+   height: 60px;
