@@ -122,3 +122,20 @@ body{
    width: 480px;
    height: 60px;
 
+}
+
+/* стили новостной ленты */
+
+.inputsContainer{
+    margin-left: 10px;
+}
+
+.news {
+    margin-left: 20px;
+    display:flexbox;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+
+    
+}
