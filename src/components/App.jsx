@@ -1,15 +1,17 @@
-import React from 'react';
-import { Routes, Route } from 'react-router-dom';
-import StartPage from './StartPage';
-import Signin from './Signin';
+import React, { useState } from 'react';
+import { Route, Routes } from 'react-router-dom';
 import Login from './Login';
+import Regin from './Regin';
+import StartPage from './StartPage';
 
-export default function App() {
+
+export default function App(userLogin) {
+  const [user, setUser] = useState(userLogin || null);
   return (
     <>
       <StartPage />
       <Routes>
-        <Route path="/registration" element={<Signin />} />
+        <Route path="/registration" element={<Regin />} />
         <Route path="/login" element={<Login />} />
       </Routes>
     </>

@@ -1,3 +1,4 @@
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -83,3 +84,41 @@ body{
     font-size: 70px;
     background-color: #EFECF5;
 }
+
+
+
+
+
+
+
+
+
+
+.body {
+   height: 100%;
+   background-color: #efecf5;
+   margin: 0px;
+}
+
+.header {
+   text-align: center;
+   padding-top: 80px;
+   font-size: 60px;
+   font-family: system-ui;
+   color: #4520ab;
+}
+
+
+
+.container {
+
+   width: 500px;
+
+
+}
+
+.btn1 {
+   background-color: #FFBC5B;
+   width: 480px;
+   height: 60px;
+

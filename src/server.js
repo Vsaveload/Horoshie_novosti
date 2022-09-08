@@ -4,7 +4,8 @@ import session from 'express-session';
 import store from 'session-file-store';
 import layoutMW from './middlewars/layoutMW';
 import startPageRender from './routes/render/startPageRender';
-
+import registrPageRender from './routes/render/registrPageRender';
+import userController from '../src/routes/api/userRouter';
 const PORT = 3000;
 const app = express();
 
@@ -29,6 +30,9 @@ app.use(express.json());
 app.use(session(sessionConfig));
 app.use(layoutMW);
 
-app.use('/', startPageRender);
+// app.use('/', startPageRender);
+app.use('/', registrPageRender);
+app.use('/api/v1/auth', userController);
+
 
 app.listen(PORT, () => console.log(`App has started on port ${PORT}`));
