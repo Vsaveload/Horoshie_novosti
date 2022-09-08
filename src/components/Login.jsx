@@ -31,7 +31,7 @@ export default function Login({ setUser }) {
     }
   };
   return (
-    <div className="container ">
+    <div className="col-md-4 ">
       <h1>Login Page</h1>
       <form onSubmit={submitHandler}>
         <div className="mb-3">
