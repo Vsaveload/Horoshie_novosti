@@ -1,6 +1,7 @@
 import express from 'express';
 import axios from 'axios';
 import * as cheerio from 'cheerio';
+import { Tag, Count } from '../../db/models';
 
 const router = express.Router();
 
@@ -12,8 +13,34 @@ router.get('/', async (req, res) => {
   const titleArr = allTitle.split('<title>').join('').split('</title>').slice(2, -1);
   const linkArr = allItem.match(/<link>.*/gmi).join('').split('<link>').filter((el) => el !== '');
   const result = titleArr.map((el, i) => ({ title: el, link: linkArr[i] }));
-  console.log(result);
   res.json(result);
+});
+
+router.post('/createtag', async (req, res) => {
+  try {
+    const { tagName, tagChoise } = req.body;
+    const newTag = await Tag.findOrCreate({ where: { name: tagName } });
+    if (tagChoise === 'true') {
+      await Count.findOrCreate({
+        where: {
+          user_id: req.session.user_id,
+          tag_id: newTag.id,
+          isgood: true,
+        },
+      });
+    } else {
+      Count.findOrCreate({
+        where: {
+          user_id: req.session.user_id,
+          tag_id: newTag.id,
+          isgood: false,
+        },
+      });
+    }
+    res.sendStatus(200);
+  } catch (error) {
+    console.error(error);
+  }
 });
 
 export default router;
