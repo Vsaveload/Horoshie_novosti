@@ -2,13 +2,15 @@ import express from 'express';
 
 const router = express.Router();
 
-router.get('/regin', (req, res) => {
-  const initState = { path: req.originalUrl };
+router.get('/registration', (req, res) => {
+  const { userEmail } = req.session;
+  const initState = { path: req.originalUrl, userEmail };
   res.layout(initState);
 });
 
 router.get('/login', (req, res) => {
-  const initState = { path: req.originalUrl };
+  const { userEmail } = req.session;
+  const initState = { path: req.originalUrl, userEmail };
   res.layout(initState);
 });
 

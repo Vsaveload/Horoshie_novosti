@@ -4,16 +4,19 @@ import Login from './Login';
 import Regin from './Regin';
 import StartPage from './StartPage';
 import NewsPage from './NewsPage';
+import Navbar from './Navbar';
 
-export default function App(userLogin) {
-  const [user, setUser] = useState(userLogin || null);
+export default function App({ userEmail }) {
+  const [user, setUser] = useState(userEmail || null);
   return (
-
-    <Routes>
-      <Route path="/" element={<StartPage />} />
-      <Route path="/registration" element={<Regin />} />
-      <Route path="/login" element={<Login />} />
-      <Route path="/news" element={<NewsPage />} />
-    </Routes>
+    <>
+      <Navbar user={user} setUser={setUser} />
+      <Routes>
+        <Route path="/" element={<StartPage />} />
+        <Route path="/registration" element={<Regin setUser={setUser} />} />
+        <Route path="/login" element={<Login setUser={setUser} />} />
+        <Route path="/news" element={<NewsPage setUser={setUser} />} />
+      </Routes>
+    </>
   );
 }
