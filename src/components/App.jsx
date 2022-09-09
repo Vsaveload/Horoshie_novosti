@@ -1,7 +1,15 @@
 import React from 'react';
+import { Route, Routes } from 'react-router-dom';
+import PersonalAccount from './PersonalAccount';
 
-export default function App() {
+export default function App({ goodTagsIs, badTagsIs }) {
   return (
-    <div>App</div>
+    <div>
+      App
+      <Routes>
+        <Route path="/personalaccount" element={<PersonalAccount userGoodTags={goodTagsIs} userBadTags={badTagsIs} />} />
+      </Routes>
+
+    </div>
   );
 }

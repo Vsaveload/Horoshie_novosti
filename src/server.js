@@ -4,6 +4,7 @@ import session from 'express-session';
 import store from 'session-file-store';
 import layoutMW from './middlewars/layoutMW';
 import startPageRender from './routes/render/startPageRender';
+import prsnlAccApiRouter from './routes/render/prsnlAccApiRouter';
 
 const PORT = 3000;
 const app = express();
@@ -30,5 +31,6 @@ app.use(session(sessionConfig));
 app.use(layoutMW);
 
 app.use('/', startPageRender);
+app.use('/api/v1', prsnlAccApiRouter);
 
 app.listen(PORT, () => console.log(`App has started on port ${PORT}`));
