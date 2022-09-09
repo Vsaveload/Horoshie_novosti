@@ -38,6 +38,7 @@ export default function NewsPage() {
       <div className="inputsContainer">
         <form onSubmit={addTagHandler}>
           <div className="mb-3">
+
             <label htmlFor="exampleInputName" className="form-label">
               Добавить тег
               <input onChange={inputHandler} value={input.name} name="name" type="text" className="form-control" id="exampleInputName" />
@@ -70,16 +71,15 @@ export default function NewsPage() {
           <button type="submit" className="btn">Добавить</button>
         </form>
       </div>
-      <div>
-        {news.map((el) => (
+      {news.map((el) => (
+        <div>
           <div key={el.id} className="news">
             <div><h6>{el.title}</h6></div>
             <a href={el.link} target="_blank" rel="noreferrer">Узнать подробнее</a>
             <p />
           </div>
-        ))}
-      </div>
+        </div>
+      ))}
     </div>
-
   );
 }
