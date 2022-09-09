@@ -9,7 +9,8 @@ import newsPageRender from './routes/render/newsPageRender';
 import registrPageRender from './routes/render/registrPageRender';
 import userController from './routes/api/userRouter';
 
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
+
 const app = express();
 
 const FileStore = store(session);
