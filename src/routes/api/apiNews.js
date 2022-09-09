@@ -19,10 +19,8 @@ router.get('/', async (req, res) => {
 router.post('/createtag', async (req, res) => {
   try {
     const { name, tagChoise } = req.body;
-    console.log(req.body, 'booody');
-    const [newTag] = await Tag.findOrCreate({ where: { name } });
 
-    console.log('YJDSQ NTU', newTag);
+    const [newTag] = await Tag.findOrCreate({ where: { name } });
     if (tagChoise === 'true') {
       await Count.findOrCreate({
         where: {
