@@ -6,7 +6,7 @@ import StartPage from './StartPage';
 import NewsPage from './NewsPage';
 import Navbar from './Navbar';
 
-export default function App({ userEmail }) {
+export default function App({ userEmail, goodTagsIs, badTagsIs }) {
   const [user, setUser] = useState(userEmail || null);
   return (
     <>
@@ -16,6 +16,7 @@ export default function App({ userEmail }) {
         <Route path="/registration" element={<Regin setUser={setUser} />} />
         <Route path="/login" element={<Login setUser={setUser} />} />
         <Route path="/news" element={<NewsPage setUser={setUser} />} />
+        <Route path="/personalaccount" element={<PersonalAccount userGoodTags={goodTagsIs} userBadTags={badTagsIs} />} />
       </Routes>
     </>
   );
