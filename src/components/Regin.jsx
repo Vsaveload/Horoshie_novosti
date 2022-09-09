@@ -25,7 +25,7 @@ export default function Regin({ setUser }) {
       const data = await response.json();
       setUser(data.name);
       setInputs({ name: '', email: '', password: '' });
-      navigate('/');
+      navigate('/news');
     }
   };
 

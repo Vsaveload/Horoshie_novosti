@@ -24,7 +24,7 @@ export default function Login({ setUser }) {
     if (response.ok) {
       const data = await response.json();
       setUser(data.name);
-      navigate('/');
+      navigate('/news');
     } else {
       // console.log('not authed');
       const data = await response.json();
