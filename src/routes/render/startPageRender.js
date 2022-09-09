@@ -13,12 +13,15 @@ router.get('/', async (req, res) => {
 
 router.get('/personalaccount', async (req, res) => {
   const { userId } = req.session;
+  const { userEmail } = req.session;
 
   const goodTagsIs = await Count.findAll({ where: { isgood: true, user_id: userId }, include: Tag });
 
   const badTagsIs = await Count.findAll({ where: { isgood: false, user_id: userId }, include: Tag });
 
-  const initState = { path: req.originalUrl, goodTagsIs, badTagsIs };
+  const initState = {
+    path: req.originalUrl, goodTagsIs, badTagsIs, userEmail,
+  };
   res.layout(initState);
 });
 

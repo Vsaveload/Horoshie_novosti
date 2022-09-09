@@ -17,7 +17,7 @@ export default function App({ userEmail, goodTagsIs, badTagsIs }) {
         <Route path="/registration" element={<Regin setUser={setUser} />} />
         <Route path="/login" element={<Login setUser={setUser} />} />
         <Route path="/news" element={<NewsPage setUser={setUser} />} />
-        <Route path="/personalaccount" element={<PersonalAccount userGoodTags={goodTagsIs} userBadTags={badTagsIs} />} />
+        <Route path="/personalaccount" element={<PersonalAccount setUser={setUser} userGoodTags={goodTagsIs} userBadTags={badTagsIs} user={user} />} />
       </Routes>
     </>
   );
