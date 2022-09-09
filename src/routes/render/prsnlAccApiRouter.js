@@ -7,9 +7,8 @@ router.get('/goodtags', async (req, res) => {
   try {
     const { userId } = req.session;
 
-    const goodTags = await Count.findAll({ where: { isgood: true, user_id: userId }, include: Tag });
-
-    console.log(`adshkfgaskdfksagflksak----------------------${goodTags}------------------`);
+    const goodTags = await Count
+      .findAll({ where: { isgood: true, user_id: userId }, include: Tag });
 
     res.json(goodTags);
   } catch (err) {
@@ -21,7 +20,8 @@ router.get('/badtags', async (req, res) => {
   try {
     const { userId } = req.session;
 
-    const badTags = await Count.findAll({ where: { isgood: false, user_id: userId }, include: Tag });
+    const badTags = await Count
+      .findAll({ where: { isgood: false, user_id: userId }, include: Tag });
 
     res.json(badTags);
   } catch (err) {

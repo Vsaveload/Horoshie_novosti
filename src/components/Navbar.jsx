@@ -14,11 +14,18 @@ export default function Navbar({ user, setUser }) {
     <div>
       {!user
         ? '' : (
-          <nav className="navbarfixed-top">
+          <nav className="navbar navbar-expand-lg bg-light">
             <div className="container-fluid">
-              <NavLink to="/news" className="navbar-brand">Хорошие новости</NavLink>
-              <NavLink to="/personalaccount" className="nav-link middle">Личный кабинет</NavLink>
-              <NavLink to="" onClick={logoutHandler} className="nav-link" href="">Выход</NavLink>
+              <NavLink className="navbar-brand" to="/news">Хорошие новости</NavLink>
+              <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span className="navbar-toggler-icon" />
+              </button>
+              <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div className="navbar-nav">
+                  <NavLink className="nav-link active" aria-current="page" to="/personalaccount">Личный кабинет</NavLink>
+                  <NavLink className="nav-link active" to="" onClick={logoutHandler}>Выход</NavLink>
+                </div>
+              </div>
             </div>
           </nav>
         )}

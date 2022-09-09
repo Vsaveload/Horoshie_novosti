@@ -11,7 +11,6 @@ router.post('/regin', async (req, res) => {
     const currUser = await User.create({ name, email, password: hashedPass });
     req.session.userId = currUser.id;
     req.session.userEmail = currUser.email;
-    req.session.userEmail = currUser.name;
     //   res.sendStatus(200);
     res.json({ name: currUser.email });
   } catch (err) {
