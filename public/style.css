@@ -127,15 +127,42 @@ body{
 /* стили новостной ленты */
 
 .inputsContainer{
-    margin-left: 10px;
+    margin-left: 850px;
 }
 
 .news {
     margin-left: 20px;
-    display:flexbox;
+    display:flex;
     justify-content: center;
     flex-direction: column;
     align-items: center;
+  
+}
 
-    
+.newsBlock{
+    background-color: #EFECF5;
+    box-shadow: 10px 10px 21px #d3d3d6,
+                -10px -10px 21px #fff;
+    margin-top: 20px;            
+}
+
+.topWright{
+    display: flex;
+    align-items: center; 
+    justify-content: center;
+
+}
+
+.parentNewsBlock{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 20px;
+
+}
+
+.plusTag{
+    display: flex;
+    align-items: center;
+    margin-left: 100px ;
 }
