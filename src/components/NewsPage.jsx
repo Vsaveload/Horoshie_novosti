@@ -16,7 +16,6 @@ export default function NewsPage() {
   };
 
   const addTagHandler = async (event) => {
-    console.log(input);
     event.preventDefault();
     const response = await fetch('/apinews/v1/createtag', {
       method: 'POST',
@@ -36,9 +35,6 @@ export default function NewsPage() {
     setFilterState(filterNews);
   }, [newTagState]);
 
-  useEffect(() => {
-    console.log(filterState);
-  }, [filterState]);
 
   useEffect(() => {
     fetch('/apinews/v1')

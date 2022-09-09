@@ -34,16 +34,22 @@ export default function PersonalAccount({ userName, userGoodTags, userBadTags })
 
   return (
     <>
-      <div>personalAccount</div>
-      <div><h1>{`Hello ${username}`}</h1></div>
-      <div>
-        <h2>GoodTags</h2>
-        {goodTags?.length ? goodTags?.map((el) => <OneTag tagObject={el.Tag} deleteHandler={deleteHandler} key={el.Tag.id} />) : 'no tags'}
+      <div className="top"><h1>Хорошие новости</h1></div>
+      {/* <div className="userpage"> */}
+      <div className="block1">
+        <div className="div">
+
+          <p className="p">Хорошие</p>
+          {goodTags?.length ? goodTags?.map((el) => <OneTag tagObject={el.Tag} deleteHandler={deleteHandler} key={el.Tag.id} />) : 'no tags'}
+        </div>
+        <div className="div">
+          <p className="p">Плохие</p>
+          {badTags?.length ? badTags?.map((el) => <OneTag tagObject={el.Tag} deleteHandler={deleteHandler} key={el.Tag.id} />) : 'no tags'}
+        </div>
+        {/* </div> */}
+
       </div>
-      <div>
-        <h2>BadTags</h2>
-        {badTags?.length ? badTags?.map((el) => <OneTag tagObject={el.Tag} deleteHandler={deleteHandler} key={el.Tag.id} />) : 'no tags'}
-      </div>
+
     </>
   );
 }

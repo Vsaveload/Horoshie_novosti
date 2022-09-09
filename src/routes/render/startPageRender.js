@@ -12,13 +12,11 @@ router.get('/', async (req, res) => {
 });
 
 router.get('/personalaccount', async (req, res) => {
-  const userName = 'bob';
+  const { userId } = req.session;
 
-  const goodTagsIs = await User.findOne({ where: { name: userName } }) // User.findByPk(id)
-    .then(async (user) => Count.findAll({ where: { isgood: true, user_id: user.id }, include: Tag }));
+  const goodTagsIs = await Count.findAll({ where: { isgood: true, user_id: userId }, include: Tag });
 
-  const badTagsIs = await User.findOne({ where: { name: userName } }) // User.findByPk(id)
-    .then(async (user) => Count.findAll({ where: { isgood: false, user_id: user.id }, include: Tag }));
+  const badTagsIs = await Count.findAll({ where: { isgood: false, user_id: userId }, include: Tag });
 
   const initState = { path: req.originalUrl, goodTagsIs, badTagsIs };
   res.layout(initState);
