@@ -5,6 +5,7 @@ import Regin from './Regin';
 import StartPage from './StartPage';
 import NewsPage from './NewsPage';
 import Navbar from './Navbar';
+import PersonalAccount from './PersonalAccount';
 
 export default function App({ userEmail, goodTagsIs, badTagsIs }) {
   const [user, setUser] = useState(userEmail || null);

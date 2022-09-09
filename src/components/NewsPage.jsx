@@ -87,14 +87,15 @@ export default function NewsPage() {
       </div>
       <div>
         {filterState.map((el) => (
-        <div>
-          <div key={el.id} className="news">
-            <div><h6>{el.title}</h6></div>
-            <a href={el.link} target="_blank" rel="noreferrer">Узнать подробнее</a>
-            <p />
+          <div>
+            <div key={el.id} className="news">
+              <div><h6>{el.title}</h6></div>
+              <a href={el.link} target="_blank" rel="noreferrer">Узнать подробнее</a>
+              <p />
+            </div>
           </div>
-        </div>
-      ))}
+        ))}
+      </div>
     </div>
   );
 }
