@@ -18,12 +18,15 @@ router.get('/', async (req, res) => {
 
 router.post('/createtag', async (req, res) => {
   try {
-    const { tagName, tagChoise } = req.body;
-    const newTag = await Tag.findOrCreate({ where: { name: tagName } });
+    const { name, tagChoise } = req.body;
+    console.log(req.body, 'booody');
+    const [newTag] = await Tag.findOrCreate({ where: { name } });
+
+    console.log('YJDSQ NTU', newTag);
     if (tagChoise === 'true') {
       await Count.findOrCreate({
         where: {
-          user_id: req.session.user_id,
+          user_id: req.session.userId,
           tag_id: newTag.id,
           isgood: true,
         },
@@ -31,13 +34,13 @@ router.post('/createtag', async (req, res) => {
     } else {
       Count.findOrCreate({
         where: {
-          user_id: req.session.user_id,
+          user_id: req.session.userId,
           tag_id: newTag.id,
           isgood: false,
         },
       });
     }
-    res.sendStatus(200);
+    res.json(newTag);
   } catch (error) {
     console.error(error);
   }

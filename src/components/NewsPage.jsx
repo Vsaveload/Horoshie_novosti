@@ -4,6 +4,8 @@ import React, { useEffect, useState } from 'react';
 export default function NewsPage() {
   const [news, setNews] = useState([]);
   const [input, setInput] = useState({ tagName: '', tagChoise: null });
+  const [newTagState, setNewTagState] = useState({});
+  const [filterState, setFilterState] = useState([]);
 
   const radioChange = (e) => {
     setInput((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -22,9 +24,21 @@ export default function NewsPage() {
       body: JSON.stringify(input),
     });
 
-    await response.status(200);
+    if (response.ok) {
+      const newTagResult = await response.json();
+      setNewTagState(newTagResult);
+    }
     setInput({ tagName: '', tagChoise: null });
   };
+
+  useEffect(() => {
+    const filterNews = news.filter((el) => el.title.includes(newTagState.name));
+    setFilterState(filterNews);
+  }, [newTagState]);
+
+  useEffect(() => {
+    console.log(filterState);
+  }, [filterState]);
 
   useEffect(() => {
     fetch('/apinews/v1')
@@ -71,7 +85,8 @@ export default function NewsPage() {
           <button type="submit" className="btn">Добавить</button>
         </form>
       </div>
-      {news.map((el) => (
+      <div>
+        {filterState.map((el) => (
         <div>
           <div key={el.id} className="news">
             <div><h6>{el.title}</h6></div>
