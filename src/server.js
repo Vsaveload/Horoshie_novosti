@@ -5,6 +5,10 @@ import store from 'session-file-store';
 import layoutMW from './middlewars/layoutMW';
 import startPageRender from './routes/render/startPageRender';
 import prsnlAccApiRouter from './routes/render/prsnlAccApiRouter';
+import apiNews from './routes/api/apiNews';
+import newsPageRender from './routes/render/newsPageRender';
+import registrPageRender from './routes/render/registrPageRender';
+import userController from './routes/api/userRouter';
 
 const PORT = 3000;
 const app = express();
@@ -32,5 +36,9 @@ app.use(layoutMW);
 
 app.use('/', startPageRender);
 app.use('/api/v1', prsnlAccApiRouter);
+app.use('/', registrPageRender);
+app.use('/api/v1/auth', userController);
+app.use('/news', newsPageRender);
+app.use('/apinews/v1', apiNews);
 
 app.listen(PORT, () => console.log(`App has started on port ${PORT}`));
