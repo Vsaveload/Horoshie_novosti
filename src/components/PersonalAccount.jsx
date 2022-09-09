@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import OneTag from './uiComponentsForPersnlAccnt/OneTag';
 
-export default function PersonalAccount({ userName, userGoodTags, userBadTags }) {
-  const username = 'usernamePlaceholder';
-
+export default function PersonalAccount({
+  userName, userGoodTags, userBadTags, setUser, user,
+}) {
   const [goodTags, setGoodTags] = useState(userGoodTags || null);
   useEffect(() => {
     if (!goodTags) {
@@ -39,11 +39,11 @@ export default function PersonalAccount({ userName, userGoodTags, userBadTags })
       <div className="block1">
         <div className="div">
 
-          <p className="p">Хорошие</p>
+          <p className="p">Интересные теги</p>
           {goodTags?.length ? goodTags?.map((el) => <OneTag tagObject={el.Tag} deleteHandler={deleteHandler} key={el.Tag.id} />) : 'no tags'}
         </div>
         <div className="div">
-          <p className="p">Плохие</p>
+          <p className="p">Неинтересные теги</p>
           {badTags?.length ? badTags?.map((el) => <OneTag tagObject={el.Tag} deleteHandler={deleteHandler} key={el.Tag.id} />) : 'no tags'}
         </div>
         {/* </div> */}
